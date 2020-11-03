@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper  namespace="com.zp.dao.OrderDao">
+
+    <resultMap id="orderMap" type="com.zp.entity.Order">
+        <id column="id" property="id"></id>
+        <result column="date" property="date"></result>
+        <result column="state" property="state"></result>
+        <association property="menu" select="com.zp.dao.MenuDao.findById" column="mid"></association>
+        <association property="user" select="com.zp.dao.UserDao.findById" column="uid"></association>
+        <!--需要关联menu表才能查出order表的mid-->
+    </resultMap>
+
+<insert id="save"  parameterType="com.zp.entity.Order">
+    insert into t_order (uid, mid, date, state) values (#{user.id},#{menu.id},#{date},0);
+</insert>
+
+    <select id="findAllByUid" resultMap="orderMap">
+        select id, mid, date, state from t_order where uid=#{uid} limit #{index},#{limit}
+    </select>
+    
+    <select id="countByUid" parameterType="long" resultType="int">
+        select count(*) from t_order where uid=#{uid};
+    </select>
+
+    <select id="findBy" resultMap="orderMap">
+        select id, mid, uid, date, state from t_order where state=0 limit #{index},#{limit};
+    </select>
+
+    <update id="modifyState" parameterType="long">
+        update t_order set state = 1 where mid=#{id};
+    </update>
+
+    <select id="count" resultType="int">
+        select count(*) from t_order where state=0;
+    </select>
+</mapper>

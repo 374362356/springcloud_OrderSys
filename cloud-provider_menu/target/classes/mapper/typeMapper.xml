@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper  namespace="com.zp.dao.TypeDao">
+    <select id="findById" resultType="com.zp.entity.MenuType" parameterType="long">
+        select * from t_type where id=#{id}
+    </select>
+
+    <select id="allType" resultType="com.zp.entity.MenuType">
+        select * from t_type
+    </select>
+</mapper>

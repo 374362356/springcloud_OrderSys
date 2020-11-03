@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="cloud-customer_client" />
+        <module name="cloud-provider_order" />
+        <module name="cloud-eurekaServer" />
+        <module name="cloud-account" />
+        <module name="cloud-provide_user" />
+        <module name="cloud-configClient" />
+        <module name="cloud-provider_menu" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="8" />
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="cloud-account" options="-parameters" />
+      <module name="cloud-configClient" options="-parameters" />
+      <module name="cloud-customer_client" options="-parameters" />
+      <module name="cloud-eurekaServer" options="-parameters" />
+      <module name="cloud-provide_user" options="-parameters" />
+      <module name="cloud-provider_menu" options="-parameters" />
+      <module name="cloud-provider_order" options="-parameters" />
+      <module name="springcloud_OrderSys" options="-parameters" />
+    </option>
+  </component>
+</project>
